@@ -4,6 +4,7 @@ import { products } from "./FeatureProduct";
 import ScrollToTopOnMount from "../template/ScrollToTopOnMount";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
+import NewItems from "./NewItems";
 
 function Landing() {
     return (
@@ -11,18 +12,8 @@ function Landing() {
             <ScrollToTopOnMount />
             <Banner />
             <div className="d-flex flex-column bg-white py-4">
-                <p className="text-start px-5">
-                    Om du är intresserad av din hälsa så är såklart både kost och motion
-                    viktigt – i obesprutad, lågprocessad mat finns färre onödiga tillsatser
-                    och fler näringsämnen som kroppen behöver för att må bra. Och med dina
-                    medvetna val är du med och påverkar miljön i rätt riktning och gör
-                    livet lättare för bina.
-                </p>
-                <div className="d-flex justify-content-center">
-                    <Link to="/products" className="btn btn-primary" replace>
-                        Browse products
-                    </Link>
-                </div>
+             <NewItems/>
+
             </div>
             <h2 className="big-black-text text-center text-bg-dark mt-4 mb-3">Våra ekologiska matvaror</h2>
             <div className="container pb-5 px-lg-5">
