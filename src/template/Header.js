@@ -20,13 +20,14 @@ function Header() {
     <header>
       <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-white border-bottom">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/" onClick={changeNav}>
+          <Link className="navbar-brand" to="/" onClick={changeNav} style={{ color: 'darkblue' }}>
             <FontAwesomeIcon
-              icon={["fab", "bootstrap"]}
-              className="ms-1"
-              size="lg"
+                icon={["fab", "pagelines"]}
+                className="ms-1"
+                size="lg"
+                style={{ color: 'darkgreen' }}
             />
-            <span className="ms-2 h5">Shop</span>
+            <span className="ms-2 h5" style={{ color: 'darkgreen' }}>EcoEats Eshop</span>
           </Link>
 
           <div className={"navbar-collapse offcanvas-collapse " + (openedDrawer ? 'open' : '')}>

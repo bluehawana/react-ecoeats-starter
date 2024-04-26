@@ -75,3 +75,31 @@
   font-size: .875rem;
   color: #6c757d;
 }
+.banner-image {
+  width: 66.67%; /* 2/3 of the screen width */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-img-top-wrapper {
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  position: relative;
+}
+
+.card-img-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.description-text {
+  height: 90px; /* Adjust this value based on your needs */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  align-content: baseline;
+  text-align: left;
+}

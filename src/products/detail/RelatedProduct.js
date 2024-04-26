@@ -1,4 +1,4 @@
-import Image from "../../nillkin-case-1.jpg";
+import Image from "../../beefs.jpg";
 import { Link } from "react-router-dom";
 
 function RelatedProduct(props) {

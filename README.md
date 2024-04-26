@@ -1,4 +1,2 @@
-# react-ecommerce-template
-Bootstrap e-commerce template in written React JS. [Live Preview](http://phyohtetarkar.github.io/react-ecommerce-template/)
-
-See better version of this with nextjs => [Mocha Mart Repo](https://github.com/phyohtetarkar/mocha-mart)
+# React-EcoEats-Platform
+This project was bootstrapped with [Create React App](and worked on by the EcoEats team.Who came from Mölndal Campus, IPL23 and JIN23 classes. The project was created as a part of the final project in the Frontend Developer education.

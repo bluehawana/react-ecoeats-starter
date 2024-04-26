@@ -1,13 +1,25 @@
-import Image from "../../nillkin-case-1.jpg";
+import React from 'react';
+import { useParams } from 'react-router-dom';
+import { products } from '../../landing/FeatureProduct'; // import the products array
 import RelatedProduct from "./RelatedProduct";
 import Ratings from "react-ratings-declarative";
 import { Link } from "react-router-dom";
 import ScrollToTopOnMount from "../../template/ScrollToTopOnMount";
 
+
 const iconPath =
   "M18.571 7.221c0 0.201-0.145 0.391-0.29 0.536l-4.051 3.951 0.96 5.58c0.011 0.078 0.011 0.145 0.011 0.223 0 0.29-0.134 0.558-0.458 0.558-0.156 0-0.313-0.056-0.446-0.134l-5.011-2.634-5.011 2.634c-0.145 0.078-0.29 0.134-0.446 0.134-0.324 0-0.469-0.268-0.469-0.558 0-0.078 0.011-0.145 0.022-0.223l0.96-5.58-4.063-3.951c-0.134-0.145-0.279-0.335-0.279-0.536 0-0.335 0.346-0.469 0.625-0.513l5.603-0.815 2.511-5.078c0.1-0.212 0.29-0.458 0.547-0.458s0.446 0.246 0.547 0.458l2.511 5.078 5.603 0.815c0.268 0.045 0.625 0.179 0.625 0.513z";
 
 function ProductDetail() {
+  const { slug } = useParams();
+  const product = products.find(product => product.id === parseInt(slug));
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
+  const {id, name, image, description} = product; // Destructure after checking if product exists
+
   function changeRating(newRating) {}
 
   return (
@@ -26,7 +38,7 @@ function ProductDetail() {
             </a>
           </li>
           <li className="breadcrumb-item active" aria-current="page">
-            Nillkin iPhone X cover
+            {name}
           </li>
         </ol>
       </nav>
@@ -41,7 +53,7 @@ function ProductDetail() {
                     <img
                       className={"rounded mb-2 ratio " + selected}
                       alt=""
-                      src={Image}
+                      src={image}
                     />
                   </a>
                 );
@@ -55,39 +67,16 @@ function ProductDetail() {
               <img
                 className="border rounded ratio ratio-1x1"
                 alt=""
-                src={Image}
+                src={image}
               />
             </div>
           </div>
-
-          {/* <div className="row mt-2">
-            <div className="col-12">
-              <div
-                className="d-flex flex-nowrap"
-                style={{ overflowX: "scroll" }}
-              >
-                {Array.from({ length: 8 }, (_, i) => {
-                  return (
-                    <a key={i} href="!#">
-                      <img
-                        className="cover rounded mb-2 me-2"
-                        width="70"
-                        height="70"
-                        alt=""
-                        src={Image}
-                      />
-                    </a>
-                  );
-                })}
-              </div>
-            </div>
-          </div> */}
         </div>
 
         <div className="col-lg-5">
           <div className="d-flex flex-column h-100">
-            <h2 className="mb-1">Nillkin iPhone X cover</h2>
-            <h4 className="text-muted mb-4">10000 Ks</h4>
+            <h2 className="mb-1">{name}</h2>
+            <h4 className="text-muted mb-4">{product.price} SEK</h4>
 
             <div className="row g-3 mb-4">
               <div className="col">
@@ -110,7 +99,7 @@ function ProductDetail() {
               <dd className="col-sm-8 mb-3">Cases & Covers</dd>
 
               <dt className="col-sm-4">Brand</dt>
-              <dd className="col-sm-8 mb-3">iPhone X</dd>
+              <dd className="col-sm-8 mb-3">{name}</dd>
 
               <dt className="col-sm-4">Manufacturer</dt>
               <dd className="col-sm-8 mb-3">Nillkin</dd>
@@ -148,15 +137,7 @@ function ProductDetail() {
             <hr />
             <p className="lead flex-shrink-0">
               <small>
-                Nature (TPU case) use environmental non-toxic TPU, silky smooth
-                and ultrathin. Glittering and translucent, arbitrary rue
-                reserved volume button cutouts, easy to operate. Side frosted
-                texture anti-slipping, details show its concern; transparent
-                frosted logo shows its taste. The release of self, the flavor of
-                life. Nillkin launched Nature transparent soft cover, only to
-                retain the original phone style. Subverting tradition,
-                redefinition. Thinner design Environmental texture better hand
-                feeling.
+                {description}
               </small>
             </p>
           </div>
@@ -175,6 +156,10 @@ function ProductDetail() {
             })}
           </div>
         </div>
+      </div>
+      <div className="container mt-5 py-4 px-xl-5">
+        <Link to="/" className="btn btn-primary mb-3">Back to Home</Link>
+        {/* rest of your component */}
       </div>
     </div>
   );
