@@ -1,6 +1,8 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faShoppingCart, faSignInAlt, faSignOutAlt, faInfoCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import logo from '../logo.png'; // Adjust this path based on your needs
 
 function Header() {
 
@@ -18,70 +20,46 @@ function Header() {
 
   return (
     <header>
-      <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-white border-bottom">
+      <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-dark border-bottom">
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/" onClick={changeNav} style={{ color: 'darkblue' }}>
-            <FontAwesomeIcon
-                icon={["fab", "pagelines"]}
-                className="ms-1"
-                size="lg"
-                style={{ color: 'darkgreen' }}
-            />
-            <span className="ms-2 h5" style={{ color: 'darkgreen' }}>EcoEats Eshop</span>
+          <Link className="navbar-brand text-muted" to="/" onClick={changeNav}>
+            <img src={logo} alt="Logo" style={{height: '70px'}} />
+            <span className="ms-lg-6 h5 text-muted">EcoEats</span>
           </Link>
 
           <div className={"navbar-collapse offcanvas-collapse " + (openedDrawer ? 'open' : '')}>
-            <ul className="navbar-nav me-auto mb-lg-0">
+            <ul className="navbar-nav ms-auto mb-lg-0">
               <li className="nav-item">
-                <Link to="/products" className="nav-link" replace onClick={changeNav}>
-                  Explore
+                <Link to="/about" className="nav-link text-muted" onClick={changeNav}>
+                  <FontAwesomeIcon icon={faInfoCircle} className="text-muted" />
+                  <span style={{fontSize: '20px'}}>About Us</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/profile" className="nav-link text-muted" onClick={changeNav}>
+                  <FontAwesomeIcon icon={faUser} className="text-muted" />
+                  <span style={{fontSize: '20px'}}>Profile</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/cart" className="nav-link text-muted" onClick={changeNav}>
+                  <FontAwesomeIcon icon={faShoppingCart} className="text-muted" />
+                  <span style={{fontSize: '20px'}}>Cart</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-link text-muted" onClick={changeNav}>
+                  <FontAwesomeIcon icon={faSignInAlt} className="text-muted" />
+                  <span style={{fontSize: '20px'}}>Login</span>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/logout" className="nav-link text-muted" onClick={changeNav}>
+                  <FontAwesomeIcon icon={faSignOutAlt} className="text-muted" />
+                  <span style={{fontSize: '20px'}}>Logout</span>
                 </Link>
               </li>
             </ul>
-            <button type="button" className="btn btn-outline-dark me-3 d-none d-lg-inline">
-              <FontAwesomeIcon icon={["fas", "shopping-cart"]} />
-              <span className="ms-3 badge rounded-pill bg-dark">0</span>
-            </button>
-            <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item dropdown">
-                <a
-                  href="!#"
-                  className="nav-link dropdown-toggle"
-                  data-toggle="dropdown"
-                  id="userDropdown"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <FontAwesomeIcon icon={["fas", "user-alt"]} />
-                </a>
-                <ul
-                  className="dropdown-menu dropdown-menu-end"
-                  aria-labelledby="userDropdown"
-                >
-                  <li>
-                    <Link to="/" className="dropdown-item" onClick={changeNav}>
-                      Login
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/" className="dropdown-item" onClick={changeNav}>
-                      Sign Up
-                    </Link>
-                  </li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-
-          <div className="d-inline-block d-lg-none">
-            <button type="button" className="btn btn-outline-dark">
-              <FontAwesomeIcon icon={["fas", "shopping-cart"]} />
-              <span className="ms-3 badge rounded-pill bg-dark">0</span>
-            </button>
-            <button className="navbar-toggler p-0 border-0 ms-3" type="button" onClick={toggleDrawer}>
-              <span className="navbar-toggler-icon"></span>
-            </button>
           </div>
         </div>
       </nav>

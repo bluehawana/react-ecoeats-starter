@@ -97,9 +97,43 @@
 }
 
 .description-text {
-  height: 90px; /* Adjust this value based on your needs */
+  height: 120px; /* Adjust this value based on your needs */
   overflow: hidden;
   text-overflow: ellipsis;
-  align-content: baseline;
-  text-align: left;
+  align-content: center;
+  text-align: justify;
+}
+
+.big-black-text {
+  font-size: 3em; /* Adjust this value based on your needs */
+  color: steelblue;
+}
+
+.about-title {
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.about-text {
+    padding-top: 40px;
+    padding-bottom: 20px;
+    padding-left: 50px;
+       padding-right: 50px;
+    font-size: 22px;
+    text-align: justify;
+
+}
+.about-container {
+  height: calc(100vh - 120px);
+  padding-top: 120px;
+  padding-left: 250px;
+  padding-right:250px;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.5)), url("./cowsaboutus.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
