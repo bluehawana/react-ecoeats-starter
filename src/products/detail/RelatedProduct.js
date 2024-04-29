@@ -1,4 +1,3 @@
-import Image from "../../beefs.jpg";
 import { Link } from "react-router-dom";
 
 function RelatedProduct(props) {
@@ -36,7 +35,7 @@ function RelatedProduct(props) {
           className="card-img-top bg-dark cover"
           height="200"
           alt=""
-          src={Image}
+          src={props.image}
         />
         <div className="card-body">
           <h5 className="card-title text-center text-dark text-truncate">
