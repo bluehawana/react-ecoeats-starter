@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Image from "../honey.jpg";
 import Image1 from "../eggs.jpg";
 import Image2 from "../millk.jpg";
@@ -49,6 +50,53 @@ function FeatureProduct({ product }) {
     );
 }
 
+const FeatureProducts = () => {
+    const [setProducts] = useState([]);
 
-export default FeatureProduct;
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch("http://localhost:8089/products");
+                const data = await response.json();
+
+                if (data.length > 0) {
+                    setProducts(data);
+
+                    // Save the fetched products to MongoDB
+                    fetch("http://localhost:8089/saveProducts", {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(data),
+                    })
+                        .then(response => response.json())
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Error:', error);
+                        });
+                }
+            } catch (error) {
+                console.error('Error:', error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    return (
+        <div className="container">
+            <h2 className="text-center mb-4">Feature Products</h2>
+            <div className="row">
+                {products.map((product) => (
+                    <FeatureProduct key={product.id} product={product} />
+                ))}
+            </div>
+        </div>
+    );
+}
+
+export default FeatureProducts;
 export { products };
